@@ -633,29 +633,26 @@ STATS
 
         <div class="stats-grid">
 
-            <div class="stat">
-                <h3>15+</h3>
-                <p>Years Experience</p>
-            </div>
+         <div class="stat">
+    <h3 data-count="15">0</h3>
+    <p>Years Experience</p>
+</div>
 
-            <div class="stat">
-                <h3>2,400+</h3>
-                <p>Projects Completed</p>
-            </div>
+<div class="stat">
+    <h3 data-count="2400">0</h3>
+    <p>Projects Completed</p>
+</div>
 
-            <div class="stat">
-                <h3>98%</h3>
-                <p>Client Satisfaction</p>
-            </div>
+<div class="stat">
+    <h3 data-count="98">0</h3>
+    <p>Client Satisfaction</p>
+</div>
 
-            <div class="stat">
-                <h3>24/7</h3>
-                <p>Emergency Support</p>
-            </div>
-
-        </div>
-
-    </div>
+<div class="stat">
+    <h3 data-count="24">0</h3>
+    <p>24/7 Emergency Support</p>
+</div>
+ </div>
 
 </section>
 
@@ -1052,7 +1049,6 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("apex_intro_seen", "true");
         }
 
-        // show only first visit
         window.addEventListener("load", () => {
             const seen = localStorage.getItem("apex_intro_seen");
 
@@ -1061,16 +1057,58 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // button close
         if (btn) {
             btn.addEventListener("click", closeModal);
         }
 
-        // click outside modal closes it
         modal.addEventListener("click", (e) => {
             if (e.target === modal) closeModal();
         });
     }
+
+    // =========================
+    // COUNT UP ANIMATION (STATS)
+    // =========================
+
+    function animateCount(el, target, duration = 1500) {
+        let start = 0;
+        const increment = target / (duration / 16);
+
+        function update() {
+            start += increment;
+
+            if (start < target) {
+                el.textContent = Math.floor(start).toLocaleString();
+                requestAnimationFrame(update);
+            } else {
+                el.textContent = target.toLocaleString() + "+";
+            }
+        }
+
+        update();
+    }
+
+    const statNumbers = document.querySelectorAll("[data-count]");
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+
+            if (!entry.isIntersecting) return;
+
+            const el = entry.target;
+            const target = parseInt(el.getAttribute("data-count"), 10);
+
+            if (!isNaN(target)) {
+                animateCount(el, target);
+                obs.unobserve(el);
+            }
+
+        });
+    }, {
+        threshold: 0.6
+    });
+
+    statNumbers.forEach(el => observer.observe(el));
 
 });
 </script>
@@ -1112,4 +1150,4 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </div>
 </body>
-      </html>
+</html>
