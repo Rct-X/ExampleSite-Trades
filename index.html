@@ -499,7 +499,72 @@ RESPONSIVE
 .site-credit a:hover{
     text-decoration:underline;
 }
+/* ===========================
+   INTRO MODAL
+=========================== */
 
+.intro-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.75);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+
+    opacity:0;
+    visibility:hidden;
+    transition:0.3s ease;
+}
+
+.intro-overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.intro-box{
+    width:min(520px,92%);
+    background:#111827;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:18px;
+    padding:2rem;
+    color:#e5e7eb;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    text-align:center;
+}
+
+.intro-box h2{
+    color:white;
+    margin-bottom:1rem;
+}
+
+.intro-box p{
+    color:#cbd5e1;
+    margin-bottom:1rem;
+    line-height:1.5;
+}
+
+.intro-box .small{
+    font-size:0.85rem;
+    color:#94a3b8;
+}
+
+.intro-box button{
+    margin-top:1rem;
+    padding:0.9rem 1.4rem;
+    border:none;
+    border-radius:999px;
+    background:#f59e0b;
+    color:#111827;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.intro-box button:hover{
+    transform:translateY(-2px);
+    background:#ffb11f;
+}
 </style>
 </head>
 
@@ -965,12 +1030,68 @@ document.getElementById("quoteForm").addEventListener("submit", function(e){
 });
 
 </script>
+    <script>
+const modal = document.getElementById("introModal");
+const btn = document.getElementById("enterSiteBtn");
+
+function showModal(){
+    modal.classList.add("show");
+    document.body.style.overflow = "hidden";
+}
+
+function closeModal(){
+    modal.classList.remove("show");
+    document.body.style.overflow = "";
+    localStorage.setItem("apex_intro_seen", "true");
+}
+
+// show only first visit
+window.addEventListener("load", () => {
+    const seen = localStorage.getItem("apex_intro_seen");
+
+    if (!seen) {
+        showModal();
+    }
+});
+
+// button closes it
+btn.addEventListener("click", closeModal);
+    </script>
 
 <!-- RCTX Analytics -->
 <script>
   window.RCTX_CLIENT_ID = "Example-Trades";
 </script>
 <script src="https://rctx.co.uk/js/rctx-tracker.js" defer></script>
+<!-- INTRO MODAL -->
+<div id="introModal" class="intro-overlay">
+  <div class="intro-box">
 
+    <h2>Welcome 👋</h2>
+
+    <p>
+      This is a <strong>demo trades website</strong> built to showcase a modern contractor landing page concept.
+    </p>
+
+    <p>
+      The layout, structure, and flow are designed for electricians, plumbers, builders, and general trade businesses.
+    </p>
+
+    <p>
+      Some images used are <strong>stock photos</strong> for visual layout purposes only.
+    </p>
+
+    <p>
+      This demo is part of a portfolio build by <strong>RCTX Web Design</strong>.
+    </p>
+
+    <p class="small">
+      You will only see this message once.
+    </p>
+
+    <button id="enterSiteBtn">Enter Site</button>
+
+  </div>
+</div>
 </body>
       </html>
