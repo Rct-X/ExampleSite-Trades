@@ -1016,53 +1016,71 @@ FOOTER
 </section>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
 
-document.getElementById("quoteForm").addEventListener("submit", function(e){
+    // =========================
+    // QUOTE FORM
+    // =========================
+    const quoteForm = document.getElementById("quoteForm");
 
-    e.preventDefault();
+    if (quoteForm) {
+        quoteForm.addEventListener("submit", function(e){
+            e.preventDefault();
 
-    alert(
-        "Thank you for your enquiry. A member of our team will contact you shortly."
-    );
+            alert("Thank you for your enquiry. A member of our team will contact you shortly.");
 
-    this.reset();
-
-});
-
-</script>
-    <script>
-const modal = document.getElementById("introModal");
-const btn = document.getElementById("enterSiteBtn");
-
-function showModal(){
-    modal.classList.add("show");
-    document.body.style.overflow = "hidden";
-}
-
-function closeModal(){
-    modal.classList.remove("show");
-    document.body.style.overflow = "";
-    localStorage.setItem("apex_intro_seen", "true");
-}
-
-// show only first visit
-window.addEventListener("load", () => {
-    const seen = localStorage.getItem("apex_intro_seen");
-
-    if (!seen) {
-        showModal();
+            this.reset();
+        });
     }
-});
 
-// button closes it
-btn.addEventListener("click", closeModal);
-    </script>
+    // =========================
+    // INTRO MODAL
+    // =========================
+    const modal = document.getElementById("introModal");
+    const btn = document.getElementById("enterSiteBtn");
+
+    if (modal) {
+
+        function showModal(){
+            modal.classList.add("show");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal(){
+            modal.classList.remove("show");
+            document.body.style.overflow = "";
+            localStorage.setItem("apex_intro_seen", "true");
+        }
+
+        // show only first visit
+        window.addEventListener("load", () => {
+            const seen = localStorage.getItem("apex_intro_seen");
+
+            if (!seen) {
+                showModal();
+            }
+        });
+
+        // button close
+        if (btn) {
+            btn.addEventListener("click", closeModal);
+        }
+
+        // click outside modal closes it
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) closeModal();
+        });
+    }
+
+});
+</script>
 
 <!-- RCTX Analytics -->
 <script>
   window.RCTX_CLIENT_ID = "Example-Trades";
 </script>
 <script src="https://rctx.co.uk/js/rctx-tracker.js" defer></script>
+
 <!-- INTRO MODAL -->
 <div id="introModal" class="intro-overlay">
   <div class="intro-box">
