@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Apex Tradesmen | Professional Contracting Services</title>
+
+<link rel="preconnect" href="https://images.unsplash.com">
+
+<style>
+
+/* =========================================
+ROOT
+========================================= */
+
+:root{
+    --primary:#1e3a8a;
+    --secondary:#f59e0b;
+    --dark:#111827;
+    --light:#f8fafc;
+    --text:#374151;
+    --border:#e5e7eb;
+    --radius:18px;
+    --shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* =========================================
+GLOBAL
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:var(--light);
+    color:var(--text);
+    line-height:1.6;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    width:100%;
+    max-width:1200px;
+    margin:auto;
+    padding:0 1.25rem;
+}
+
+section{
+    padding:5rem 0;
+}
+
+h1,h2,h3,h4{
+    color:var(--dark);
+    line-height:1.2;
+}
+
+h1{
+    font-size:clamp(2.4rem,6vw,4.8rem);
+}
+
+h2{
+    font-size:clamp(2rem,4vw,3rem);
+    margin-bottom:1rem;
+}
+
+p{
+    color:#4b5563;
+}
+
+/* =========================================
+HEADER
+========================================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(17,24,39,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.navbar{
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:1.6rem;
+    font-weight:800;
+    color:white;
+}
+
+.logo span{
+    color:var(--secondary);
+}
+
+.nav-links{
+    display:flex;
+    gap:2rem;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+    transition:0.25s ease;
+}
+
+.nav-links a:hover{
+    color:var(--secondary);
+}
+
+/* =========================================
+BUTTONS
+========================================= */
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.5rem;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    padding:1rem 1.5rem;
+    border-radius:999px;
+    font-weight:700;
+    transition:0.3s ease;
+}
+
+.btn-primary{
+    background:var(--secondary);
+    color:var(--dark);
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+    background:#ffb11f;
+}
+
+.btn-dark{
+    background:#111827;
+    color:white;
+}
+
+.btn-dark:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================================
+HERO
+========================================= */
+
+.hero{
+    min-height:92vh;
+
+    background:
+    linear-gradient(rgba(15,23,42,0.78),rgba(15,23,42,0.8)),
+    url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600&auto=format&fit=crop')
+    center center/cover no-repeat;
+
+    display:flex;
+    align-items:center;
+}
+
+.hero-content{
+    max-width:760px;
+}
+
+.hero-badge{
+    display:inline-block;
+    background:rgba(255,255,255,0.12);
+    color:white;
+    padding:.5rem 1rem;
+    border-radius:999px;
+    margin-bottom:1.5rem;
+    font-weight:600;
+    backdrop-filter:blur(5px);
+}
+
+.hero h1{
+    color:white;
+    margin-bottom:1.5rem;
+}
+
+.hero p{
+    color:#e5e7eb;
+    font-size:1.15rem;
+    margin-bottom:2rem;
+}
+
+/* =========================================
+STATS
+========================================= */
+
+.stats{
+    margin-top:-80px;
+    position:relative;
+    z-index:10;
+}
+
+.stats-grid{
+    background:white;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:2rem;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:2rem;
+}
+
+.stat{
+    text-align:center;
+}
+
+.stat h3{
+    font-size:2.2rem;
+    color:var(--primary);
+}
+
+.stat p{
+    font-weight:600;
+}
+
+/* =========================================
+SERVICES
+========================================= */
+
+.section-heading{
+    text-align:center;
+    max-width:700px;
+    margin:auto auto 3rem;
+}
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:2rem;
+}
+
+.service-card{
+    background:white;
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    transition:0.35s ease;
+}
+
+.service-card:hover{
+    transform:translateY(-8px);
+}
+
+.service-image{
+    height:240px;
+    overflow:hidden;
+}
+
+.service-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.4s ease;
+}
+
+.service-card:hover img{
+    transform:scale(1.05);
+}
+
+.service-content{
+    padding:1.5rem;
+}
+
+.service-content h3{
+    margin-bottom:1rem;
+}
+
+/* =========================================
+SHOWCASE
+========================================= */
+
+.showcase{
+    background:white;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:1.5rem;
+    margin-top:3rem;
+}
+
+.gallery img{
+    height:300px;
+    width:100%;
+    object-fit:cover;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+}
+
+/* =========================================
+WHY US
+========================================= */
+
+.features-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:2rem;
+}
+
+.feature-card{
+    background:white;
+    border-radius:var(--radius);
+    padding:2rem;
+    box-shadow:var(--shadow);
+}
+
+.feature-icon{
+    font-size:2rem;
+    margin-bottom:1rem;
+}
+
+/* =========================================
+QUOTE
+========================================= */
+
+.quote-wrapper{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3rem;
+    align-items:center;
+}
+
+.quote-image img{
+    border-radius:var(--radius);
+    height:100%;
+    object-fit:cover;
+    box-shadow:var(--shadow);
+}
+
+.quote-form{
+    background:white;
+    padding:2rem;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+}
+
+.form-group{
+    margin-bottom:1.25rem;
+}
+
+label{
+    display:block;
+    margin-bottom:.5rem;
+    font-weight:700;
+    color:var(--dark);
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:1rem;
+    border-radius:12px;
+    border:1px solid var(--border);
+    font-size:1rem;
+    background:#fff;
+}
+
+textarea{
+    resize:vertical;
+    min-height:140px;
+}
+
+/* =========================================
+CTA
+========================================= */
+
+.cta{
+    background:
+    linear-gradient(rgba(30,58,138,0.92),rgba(30,58,138,0.92)),
+    url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop')
+    center center/cover no-repeat;
+
+    color:white;
+    text-align:center;
+}
+
+.cta h2{
+    color:white;
+}
+
+.cta p{
+    color:#dbeafe;
+    margin:1rem auto 2rem;
+    max-width:700px;
+}
+
+/* =========================================
+FOOTER
+========================================= */
+
+footer{
+    background:#0f172a;
+    color:white;
+    padding:4rem 0 2rem;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:2rem;
+}
+
+.footer-title{
+    color:white;
+    margin-bottom:1rem;
+}
+
+.footer-links{
+    list-style:none;
+}
+
+.footer-links li{
+    margin-bottom:.75rem;
+}
+
+.footer-links a{
+    color:#cbd5e1;
+    text-decoration:none;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.1);
+    margin-top:3rem;
+    padding-top:1.5rem;
+    text-align:center;
+    color:#94a3b8;
+}
+
+/* =========================================
+RESPONSIVE
+========================================= */
+
+@media(max-width:900px){
+
+    .quote-wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        min-height:80vh;
+    }
+}
+
+.site-credit{
+    background:#020617;
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding:18px 0;
+    text-align:center;
+}
+
+.site-credit p{
+    margin:0;
+    font-size:0.95rem;
+    color:#94a3b8;
+}
+
+.site-credit a{
+    color:#f59e0b;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.site-credit a:hover{
+    text-decoration:underline;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================
+HEADER
+========================================= -->
+
+<header>
+    <div class="container navbar">
+
+        <div class="logo">
+            🛠️ Apex <span>Tradesmen</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#quote">Quote</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </div>
+</header>
+
+<!-- =========================================
+HERO
+========================================= -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                Trusted Commercial & Residential Contractors
+            </div>
+
+            <h1>
+                Professional Trade Services Built Around Quality
+            </h1>
+
+            <p>
+                Reliable electrical, plumbing, carpentry, brickwork, and site management solutions delivered by experienced certified professionals.
+            </p>
+
+            <a href="#quote" class="btn btn-primary">
+                Get Free Estimate
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+STATS
+========================================= -->
+
+<section class="stats">
+
+    <div class="container">
+
+        <div class="stats-grid">
+
+            <div class="stat">
+                <h3>15+</h3>
+                <p>Years Experience</p>
+            </div>
+
+            <div class="stat">
+                <h3>2,400+</h3>
+                <p>Projects Completed</p>
+            </div>
+
+            <div class="stat">
+                <h3>98%</h3>
+                <p>Client Satisfaction</p>
+            </div>
+
+            <div class="stat">
+                <h3>24/7</h3>
+                <p>Emergency Support</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+SERVICES
+========================================= -->
+
+<section id="services">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <h2>Our Core Services</h2>
+            <p>
+                Comprehensive contracting services tailored for domestic, commercial, and industrial projects.
+            </p>
+        </div>
+
+        <div class="services-grid">
+
+            <div class="service-card">
+
+                <div class="service-image">
+<img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1200&auto=format&fit=crop"
+     alt="Tradesman installing plumbing system">
+                </div>
+
+           <div class="service-content">
+    <h3>Bathroom Renovation</h3>
+    <p>
+        Full bathroom upgrades including tiling, plumbing, lighting, ventilation, and modern fixture installation.
+    </p>
+</div>
+
+            </div>
+
+            <div class="service-card">
+
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop" alt="">
+                </div>
+
+                <div class="service-content">
+                    <h3>Plumbing & Heating</h3>
+                    <p>
+                        Boiler servicing, pipe installations, heating systems, drainage solutions, and rapid emergency repairs.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="service-card">
+
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=1200&auto=format&fit=crop" alt="">
+                </div>
+
+                <div class="service-content">
+                    <h3>Carpentry & Framing</h3>
+                    <p>
+                        Bespoke woodwork, roofing structures, timber framing, internal fit-outs, and partition installations.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="service-card">
+
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop" alt="">
+                </div>
+
+                <div class="service-content">
+                    <h3>Brickwork & Masonry</h3>
+                    <p>
+                        Structural bricklaying, retaining walls, foundations, concrete work, and restoration projects.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="service-card">
+
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" alt="">
+                </div>
+
+                <div class="service-content">
+                    <h3>Plastering & Drylining</h3>
+                    <p>
+                        Smooth finishes, rendering, drylining, patch repairs, and professional wall preparation.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="service-card">
+
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop" alt="">
+                </div>
+
+                <div class="service-content">
+                    <h3>Project Management</h3>
+                    <p>
+                        End-to-end site supervision, scheduling, subcontractor coordination, and compliance management.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+PROJECTS
+========================================= -->
+
+<section class="showcase" id="projects">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <h2>Recent Projects</h2>
+            <p>
+                High-standard commercial and residential work delivered across multiple sectors.
+            </p>
+        </div>
+
+        <div class="gallery">
+
+            <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?q=80&w=1200&auto=format&fit=crop" alt="">
+
+            <img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?q=80&w=1200&auto=format&fit=crop" alt="">
+
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop" alt="">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+WHY US
+========================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading">
+            <h2>Why Clients Choose Apex</h2>
+        </div>
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <h3>Certified Professionals</h3>
+                <p>
+                    Fully licensed, insured, and safety-certified specialists with proven experience.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💷</div>
+                <h3>Transparent Pricing</h3>
+                <p>
+                    Clear itemised quotations with zero hidden costs or surprise charges.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⏱️</div>
+                <h3>Reliable Scheduling</h3>
+                <p>
+                    We prioritise punctual arrivals, fast turnaround times, and organised project delivery.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+QUOTE
+========================================= -->
+
+<section id="quote">
+
+    <div class="container">
+
+        <div class="quote-wrapper">
+
+            <div class="quote-image">
+
+                <img src="https://images.unsplash.com/photo-1541976844346-f18aeac57b06?q=80&w=1200&auto=format&fit=crop" alt="">
+
+            </div>
+
+            <div class="quote-form">
+
+                <h2>Request A Quote</h2>
+
+                <p style="margin-bottom:2rem;">
+                    Submit your project details and our team will contact you within 24 business hours.
+                </p>
+
+                <form id="quoteForm">
+
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" required placeholder="John Smith">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" required placeholder="name@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" required placeholder="+44 7123 456789">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Required Service</label>
+
+                        <select required>
+                            <option value="">Select Service</option>
+                            <option>Electrical</option>
+                            <option>Plumbing</option>
+                            <option>Carpentry</option>
+                            <option>Brickwork</option>
+                            <option>Plastering</option>
+                            <option>Multi-Trade Project</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Project Details</label>
+
+                        <textarea required placeholder="Describe your project requirements..."></textarea>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">
+                        Submit Enquiry
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+CTA
+========================================= -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <h2>
+            Need Reliable Contractors For Your Next Project?
+        </h2>
+
+        <p>
+            From small domestic repairs to large-scale commercial developments, Apex Tradesmen delivers dependable results.
+        </p>
+
+        <a href="#quote" class="btn btn-primary">
+            Start Your Project
+        </a>
+
+    </div>
+
+</section>
+
+<!-- =========================================
+FOOTER
+========================================= -->
+
+<footer id="contact">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+                <h3 class="footer-title">
+                    Apex Tradesmen
+                </h3>
+
+                <p>
+                    Trusted contractors delivering high-quality workmanship across residential and commercial sectors.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="footer-title">
+                    Services
+                </h3>
+
+                <ul class="footer-links">
+                    <li><a href="#">Electrical</a></li>
+                    <li><a href="#">Plumbing</a></li>
+                    <li><a href="#">Carpentry</a></li>
+                    <li><a href="#">Brickwork</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer-title">
+                    Contact
+                </h3>
+
+                <ul class="footer-links">
+                    <li><a href="#">hello@apextradesmen.co.uk</a></li>
+                    <li><a href="#">+44 02920 123456</a></li>
+                    <li><a href="#">Cardiff, Wales</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Apex Tradesmen Ltd. All rights reserved.
+        </div>
+
+    </div>
+
+</footer>
+<section class="site-credit">
+
+    <div class="container">
+
+        <p>
+            Website designed, hosted and maintained by
+            <a href="https://rctx.co.uk" target="_blank" rel="noopener">
+                RCTX Web Design
+            </a>.
+            Fast hosting, ongoing support, security updates and local UK-based assistance included.
+        </p>
+
+    </div>
+
+</section>
+
+<script>
+
+document.getElementById("quoteForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    alert(
+        "Thank you for your enquiry. A member of our team will contact you shortly."
+    );
+
+    this.reset();
+
+});
+
+</script>
+
+<!-- RCTX Analytics -->
+<script>
+  window.RCTX_CLIENT_ID = "Example-Trades";
+</script>
+<script src="https://rctx.co.uk/js/rctx-tracker.js" defer></script>
+
+</body>
+      </html>
